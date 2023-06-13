@@ -1,0 +1,8 @@
+tracepoint:raw_syscalls:sys_enter {
+    @count[comm] = count();
+}
+
+END {
+    print("\nException Frequency:")
+    print(@count)
+}
