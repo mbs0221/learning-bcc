@@ -68,3 +68,24 @@ sudo bpftrace exception_monitor.bt
 ```
 sudo python packet_counter.py
 ```
+
+### 案例：使用eBPF和BCC库来实时监控网络数据包的传输情况。
+在这个案例中，我们将使用BCC库提供的BPFTable和BPFProgram来捕获网络数据包的发送和接收事件，并输出相关信息。
+
+```
+sudo python packet_monitor-1.py
+```
+
+### 案例：实时监控系统中文件的读写操作
+在这个案例中，我们将使用BCC库提供的BPFTable和BPFProgram来捕获文件读写事件，并输出相关信息。
+
+```
+sudo python file_monitor-1.py
+```
+
+### 案例：使用eBPF和BCC库来监控文件系统的访问情况
+在这个案例中，我们将使用BCC库提供的BPFTable和BPFProgram来捕获文件系统的读写事件，并输出相关信息。
+
+```
+sudo python file_monitor-2.py
+```
