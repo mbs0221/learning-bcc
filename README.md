@@ -1,3 +1,5 @@
+# Learning BCC with ChatGPT
+## 案例教学
 ### 案例：网络连接计数
 
 接下来，让我们通过一个案例教学来演示如何使用BCC的功能接口。假设我们想要跟踪系统中的网络连接，并统计特定端口的连接数量。
@@ -69,6 +71,14 @@ sudo bpftrace exception_monitor.bt
 sudo python packet_counter.py
 ```
 
+### 案例：使用eBPF和BCC库来进行网络流量分析
+这次我们将学习如何使用eBPF和BCC库来进行网络流量分析。我们将捕获网络接口上的数据包，并统计每个源IP地址发送的数据包数量。
+
+```
+sudo python packet_counter-1.py
+```
+
+
 ### 案例：使用eBPF和BCC库来实时监控网络数据包的传输情况。
 在这个案例中，我们将使用BCC库提供的BPFTable和BPFProgram来捕获网络数据包的发送和接收事件，并输出相关信息。
 
@@ -88,4 +98,27 @@ sudo python file_monitor-1.py
 
 ```
 sudo python file_monitor-2.py
+```
+
+### 案例：使用BCC实现拦截mmap()和munmap()系统调用
+当使用eBPF动态拦截内存管理相关的系统调用时，您可以编写一个eBPF程序，以hook的方式拦截mmap()和munmap()系统调用，并在调用发生时执行自定义的逻辑。
+
+```
+# 编译命令如下：
+clang -O2 -target bpf -c mmap_hook.c -o mmap_hook.o
+# 加载命令如下：
+bpftool prog load mmap_hook.o /sys/fs/bpf/mmap_hook
+# 加载成功后，您可以使用bpftool工具将拦截程序与目标进程关联起来：
+bpftool prog attach /sys/fs/bpf/mmap_hook /path/to/target_program
+```
+或
+```
+sudo python mmap_hook.py
+```
+
+### 案例：编写一个eBPF程序，用于监控系统中的TCP连接，并计算每个连接的数据传输速率
+
+```
+sudo apt-get install bpfcc-tools python3-bpfcc
+sudo python3 tcp_rate.py
 ```
