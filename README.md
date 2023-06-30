@@ -1,4 +1,7 @@
 # Learning BCC with ChatGPT
+```
+sudo apt install bpfcc-tools python3-bpfcc
+```
 ## 案例教学
 ### 案例：网络连接计数
 
@@ -121,4 +124,16 @@ sudo python mmap_hook.py
 ```
 sudo apt-get install bpfcc-tools python3-bpfcc
 sudo python3 tcp_rate.py
+```
+
+### 案例：下面是一个使用 BCC 拦截进程页表更新的例子：
+
+```
+sudo python3 page_table_updates.py
+```
+
+### 案例：下面是一个使用 eBPF 和 BCC 的示例程序，用于递归遍历进程页表：
+
+```
+sudo python3 page_table_traversal.py
 ```
